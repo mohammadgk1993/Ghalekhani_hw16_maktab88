@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div>
+      <button onclick="documentRequest([{}])">A.  all Documents</button>
+      <button onclick="documentRequest([{},{_id:0}])">B.  all Documents without Id</button>
+      <button onclick="documentRequest([{ type: 'Audio Album'}])">C.  audio album type</button>
+      <button onclick="documentRequest([{ 'pricing.retail' : {$lt : 5000}}])">D.  pricing retail under 5000</button>
+      <button onclick="documentRequest([{ type: { $ne: 'Film' }}])">E.  not film type</button>
+      <button onclick="documentRequest([{ 'shipping.weight': {$gt: 15}}])">F.  shipping weight bigger than 15</button>
+      <button onclick='documentUpdateRequest([{"details.title":"The Matrix"},{"pricing.list":2000}])'>G.  The Matrix Update pricing</button>
+      <button onclick="documentRequest([{type:'Film','shipping.dimensions.depth':{$eq:1}}])">H.  Film Type and Depth one</button>
+      <button onclick="documentLengthRequest([{type:'Film'}])">I.  film type length</button>
+      <button onclick="documentRequest([{'details.writer': {$in:'Jonathan Nolan'}}])">J.  details writer</button>
+      <button onclick="documentMaxRequest([{'pricing.savings':-1}])">K.  pricing saving MAX</button>
+      <button onclick="documentRequest([{'details.title':{$regex:'x'}}])">L.  details title include x</button>
+      <button onclick='documentDeleteRequest([{"details.aspect_ratio":"1.66:1"}])'>M.  aspect ratio Delete</button>
+    </div>
+
+    <div id="output-box">
+      <p>output:</p>
+      <p id="output"></p>
+    </div>
+
+    <script>
+      function documentRequest(docArray) {
+        fetch('/user/', {
+            method: 'POST',
+            body: JSON.stringify(docArray),
+            headers: {
+              'Content-Type': 'application/json'
+            },
+          })
+          .then(response => response.json())
+          .then(data => {
+            console.log(data)
+            $('#output').text(JSON.stringify(data))
+          })
+      }
+      
+      function documentMaxRequest(docArray) {
+        fetch('/user/max', {
+            method: 'POST',
+            body: JSON.stringify(docArray),
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+          .then(response => response.json())
+          .then(data => {
+            console.log(data)
+            $('#output').text(JSON.stringify(data))})
+      }
+
+      function documentLengthRequest(docArray) {
+        fetch('/user/length', {
+            method: 'POST',
+            body: JSON.stringify(docArray),
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+          .then(response => response.json())
+          .then(data => {
+            console.log(data)
+            $('#output').text(JSON.stringify(data))
+          })
+      }
+
+      function documentUpdateRequest(docArray) {
+        fetch('/user/', {
+            method: 'PATCH',
+            body: JSON.stringify(docArray),
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+          .then(response => response.json())
+          .then(data => {
+            console.log(data)
+            $('#output').text(JSON.stringify(data))
+          })
+      }
+
+      function documentDeleteRequest(docArray) {
+        fetch('/user/', {
+            method: 'DELETE',
+            body: JSON.stringify(docArray),
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+          .then(response => response.json())
+          .then(data => {
+            console.log(data)
+            $('#output').text(JSON.stringify(data))
+          })
+      }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  </body>
+</html>

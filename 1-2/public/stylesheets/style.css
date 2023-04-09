@@ -7,7 +7,28 @@ a {
   color: #00B7FF;
 }
 
-#createNewEmployee {
+caption {
+  font-size: 25px;
+  margin: 3%;
+}
+
+#crud-forms {
+  display: flex;
+  flex-direction: row;
+}
+
+#filters {
+  display: flex;
+  flex-direction: column;
+  margin: 2%;
+  background-color: #04AA6D;
+  color: white;
+  padding: 1%;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+#createNewEmployee ,#updateEmployee ,#deleteEmployee{
   margin: 2%;
   width: 30%;
   display: flex;
@@ -19,7 +40,7 @@ a {
   border-radius: 5px;
 }
 
-#create-button {
+#create-button ,#update-button, #delete-button {
   margin-top: 3%;
 }
 

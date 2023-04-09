@@ -58,7 +58,7 @@ const EmployeeSchema = new mongoose.Schema({
             },
             {
                 validator: async function(v) {
-                    const user = await this.constructor.findOne({ email: v });
+                    const user = await this.constructor.findOne({ userId: v });
                     if (user) {
                         throw new Error('userId already exists');
                     }

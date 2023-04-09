@@ -15,42 +15,104 @@
         <tbody></tbody>
     </table>
 
-    <form id="createNewEmployee">
-        <label for="firstName">firstName</label>
-        <input type="text" id="firstName" minlength="3" maxlength="30" required>
-        <br>
-        <label for="lastName">lastName</label>
-        <input type="text" id="lastName" minlength="3" maxlength="30" required>
-        <br>
-        <label for="gender">gender</label>
-        <select id="gender" value="not-set" selected>
-            <option value="male">male</option>
-            <option value="female">female</option>
-            <option value="not-set">not-set</option>
-        </select>
-        <label for="birth">birth date</label>
-        <input type="date" id="birth" required>
-        <br>
-        <label for="phoneNumber">phone number</label>
-        <input type="tel" id="phoneNumber" name="phoneNumber" pattern="^(\+98|0)?9\d{9}$" required>
-        <br>
-        <label for="userId">user id</label>
-        <input type="text" id="userId" minlength="10" maxlength="10" required>
-        <br>
-        <label for="city">city</label>
-        <input type="text" id="city">
-        <br>
-        <label for="company">company</label>
-        <input type="text" id="company" required>
-        <br>
-        <label for="position">position</label>
-        <select id="position" value="employee" selected>
-            <option value="manager">manager</option>
-            <option value="employee">employee</option>
-        </select>
-        <br>
-        <input id="create-button" type="submit" value="Add New Employee">
-    </form>
+    <div id = "crud-forms">
+
+        <form id="createNewEmployee">
+            <caption>Create new Employee</caption>
+            <hr>
+            <label for="firstName">firstName</label>
+            <input type="text" id="firstName" minlength="3" maxlength="30" required>
+            <br>
+            <label for="lastName">lastName</label>
+            <input type="text" id="lastName" minlength="3" maxlength="30" required>
+            <br>
+            <label for="gender">gender</label>
+            <select id="gender" value="not-set" selected>
+                <option value="male">male</option>
+                <option value="female">female</option>
+                <option value="not-set">not-set</option>
+            </select>
+            <label for="birth">birth date</label>
+            <input type="date" id="birth" required>
+            <br>
+            <label for="phoneNumber">phone number</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" pattern="^(\+98|0)?9\d{9}$" required>
+            <br>
+            <label for="userId">user id</label>
+            <input type="text" id="userId" minlength="10" maxlength="10" required>
+            <br>
+            <label for="city">city</label>
+            <input type="text" id="city">
+            <br>
+            <label for="company">company</label>
+            <input type="text" id="company" required>
+            <br>
+            <label for="position">position</label>
+            <select id="position" value="employee" selected>
+                <option value="manager">manager</option>
+                <option value="employee">employee</option>
+            </select>
+            <br>
+            <input id="create-button" type="submit" value="Create">
+        </form>
+
+        <form id = "deleteEmployee">
+            <caption>Delete Employee</caption>
+            <hr>
+            <label for="delete-userId">user id</label>
+            <input type="text" id="delete-userId" minlength="10" maxlength="10" required>
+            <input id="delete-button" type="submit" value="Delete">
+        </form>
+
+        <form id = "updateEmployee">
+            <caption>Update Employee</caption>
+            <hr>
+            <label for="update-firstName">firstName</label>
+            <input type="text" id="update-firstName" minlength="3" maxlength="30" required>
+            <br>
+            <label for="update-lastName">lastName</label>
+            <input type="text" id="update-lastName" minlength="3" maxlength="30" required>
+            <br>
+            <label for="update-gender">gender</label>
+            <select id="update-gender" value="not-set" selected>
+                <option value="male">male</option>
+                <option value="female">female</option>
+                <option value="not-set">not-set</option>
+            </select>
+            <label for="update-birth">birth date</label>
+            <input type="date" id="update-birth" required>
+            <br>
+            <label for="update-phoneNumber">phone number</label>
+            <input type="tel" id="update-phoneNumber" name="phoneNumber" pattern="^(\+98|0)?9\d{9}$" required>
+            <br>
+            <label for="update-userId">user id</label>
+            <input type="text" id="update-userId" minlength="10" maxlength="10" required>
+            <br>
+            <label for="update-city">city</label>
+            <input type="text" id="update-city">
+            <br>
+            <label for="update-company">company</label>
+            <input type="text" id="update-company" required>
+            <br>
+            <label for="update-position">position</label>
+            <select id="update-position" value="employee" selected>
+                <option value="manager">manager</option>
+                <option value="employee">employee</option>
+            </select>
+            <br>
+            <input id="update-button" type="submit" value="Update">
+        </form>
+
+    </div>
+
+    <div id="filters">
+        <button id="one">Employees in Tehran</button>
+        <button id="two">Employees age over 25</button>
+        <button id="three">Employees who only own 1 phone Number</button>
+        <button id="four">Employees who female and manager</button>
+        <button id="five">Employees who male and sort descending by age</button>
+        <button id="six">Empoyee who last added to database</button>
+    </div>
     
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>

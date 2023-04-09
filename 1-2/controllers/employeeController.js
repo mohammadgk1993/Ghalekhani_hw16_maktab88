@@ -73,11 +73,64 @@ const removeEmployee = (req, res, next) => {
     })
 };
 
+const filterEmployee = (req, res, next) => {
+    if (req.params.filter == '1') {
+        Employee.find({city:"tehran"})
+        .then(employees => res.json(employees))
+        .catch(err => {
+            return next(createError(500, err.message));
+        })
+    }
+
+    if (req.params.filter == '2') {
+        let twentyFiveYears = new Date()
+        twentyFiveYears.setFullYear(twentyFiveYears.getFullYear() - 25)
+        Employee.find({birth:{$lt: twentyFiveYears}})
+        .then(employees => res.json(employees))
+        .catch(err => {
+            return next(createError(500, err.message));
+        })
+    }
+
+    if (req.params.filter == '3') {
+        Employee.find({phoneNumber:{$size:1}})
+        .then(employees => res.json(employees))
+        .catch(err => {
+            return next(createError(500, err.message));
+        })
+    }
+
+    if (req.params.filter == '4') {
+        Employee.find({gender:"female",position:"manager"})
+        .then(employees => res.json(employees))
+        .catch(err => {
+            return next(createError(500, err.message));
+        })
+    }
+
+    if (req.params.filter == '5') {
+        Employee.find({gender:"male"}).sort({birth:"desc"})
+        .then(employees => res.json(employees))
+        .catch(err => {
+            return next(createError(500, err.message));
+        })
+    }
+
+    if (req.params.filter == '6') {     
+        Employee.findOne().sort({ createdAt: 'desc' })
+        .then(employees => res.json([employees]))
+        .catch(err => {
+            return next(createError(500, err.message));
+        })
+    }
+};
+
 module.exports = {
     createEmployee,
     getAllEmployees,
     readEmployee,
     updateEmployee,
     removeEmployee,
+    filterEmployee,
     page
 };

@@ -7,6 +7,7 @@ const {
     readEmployee,
     updateEmployee,
     removeEmployee,
+    filterEmployee,
     page
  } = require("../controllers/employeeController")
 
@@ -23,5 +24,7 @@ router.post("/read", readEmployee)
 router.patch("/", updateEmployee)
 
 router.delete("/", removeEmployee)
+
+router.get('/:filter', filterEmployee)
 
 module.exports = router;
